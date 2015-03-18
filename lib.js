@@ -92,7 +92,7 @@ Template.templateInspector.events({
   },
   "click [data-log-instance]": function(e, tpl) {
     var tpl = tpl.state("activeTpl");
-    console.log("Tpl instance for '" + tpl.view.name + "':", tpl);
+    console.log("Tpl instance for '" + getTplName(tpl) + "':", tpl);
   }
 });
 
