@@ -75,10 +75,25 @@ Template.templateInspector.hooks({
   },
   rendered: function() {
     var el = this.$(".template-inspector");
-    el.resizable();
-    el.draggable({
-      handle: ".ti-header"
+    el.resizable({
+      stop: function(ev, ui) {
+        localStorage.setItem("TIwidth", el.outerWidth());
+        localStorage.setItem("TIheight", el.outerHeight());
+      }
     });
+    el.draggable({
+      handle: ".ti-header",
+      stop: function(ev, ui) {
+        localStorage.setItem("TItop", el.position().top);
+        localStorage.setItem("TIleft", el.position().left);
+      }
+    });
+    var css = {};
+    if (localStorage.getItem("TIwidth")) css.width = localStorage.getItem("TIwidth") + "px";
+    if (localStorage.getItem("TIheight")) css.height = localStorage.getItem("TIheight") + "px";
+    if (localStorage.getItem("TItop")) css.top = localStorage.getItem("TItop") + "px";
+    if (localStorage.getItem("TIleft")) css.left = localStorage.getItem("TIleft") + "px";
+    el.css(css);
   }
 });
 
