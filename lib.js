@@ -92,7 +92,7 @@ Template.templateInspector.hooks({
     if (localStorage.getItem("TIwidth")) css.width = localStorage.getItem("TIwidth") + "px";
     if (localStorage.getItem("TIheight")) css.height = localStorage.getItem("TIheight") + "px";
     if (localStorage.getItem("TItop")) css.top = localStorage.getItem("TItop") + "px";
-    if (localStorage.getItem("TIleft")) css.left = localStorage.getItem("TIleft") + "px";
+    css.left = localStorage.getItem("TIleft") ? localStorage.getItem("TIleft") + "px" : $(window).width() - el.width() + "px";
     el.css(css);
   }
 });

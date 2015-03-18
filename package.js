@@ -2,7 +2,7 @@ Package.describe({
   name: "gwendall:template-inspector",
   summary: "Inspector for Blaze templates",
   git: "https://github.com/gwendall/meteor-template-inspector.git",
-  version: "0.1.5"
+  version: "0.1.6"
 });
 
 Package.onUse(function (api, where) {
