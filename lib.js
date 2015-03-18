@@ -2,10 +2,10 @@
 // Insert debug window in DOM //
 ////////////////////////////////
 
-var debugTpl = {};
+var inspectorTpl = {};
 Meteor.startup(function() {
   var view = Blaze.render(Template.templateInspector, document.body);
-  debugTpl = view.templateInstance();
+  inspectorTpl = view.templateInstance();
 });
 
 /////////////////////////////////////////////
@@ -28,7 +28,7 @@ Template.body.events({
   "mouseenter [data-template]": function(e, data, tpl) {
     if (handle) Meteor.clearTimeout(handle);
     handle = Meteor.setTimeout(function() {
-      debugTpl.state("activeTpl", tpl);
+      inspectorTpl.state("activeTpl", tpl);
       $("[data-template]").removeClass("ti-active");
       $(e.target).addClass("ti-active");
     }, 500);
@@ -164,4 +164,14 @@ Template.TI_history.helpers({
 
 UI.registerHelper("equals", function(v1, v2) {
   return (v1 === v2);
+});
+
+UI.registerHelper("moment", function(date, format) {
+  var m = moment(date);
+  if (_.isString(format)) {
+    m = m.format(format);
+  } else {
+    m = m.fromNow();
+  }
+  return m;
 });
