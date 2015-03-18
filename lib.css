@@ -1,0 +1,190 @@
+[data-template] {
+  border: 1px solid rgba(150, 150, 150, 1);
+}
+
+[data-template].ti-active {
+  border: 1px solid rgba(239, 72, 54, 1);
+}
+
+.template-inspector {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  width: 400px;
+  height: 600px;
+  z-index: 1000;
+  border: rgba(0, 0, 0, .9) solid 5px;
+  border-radius: 5px;
+
+  background: rgba(0, 0, 0, .8);
+  color: white;
+
+  background: rgba(245, 245, 245, .95);
+  color: rgba(0, 0, 0, .7);
+
+  font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+
+  -webkit-flex-direction: column;
+  flex-direction: column;
+
+  min-width: 230px;
+  min-height: 30px;
+
+}
+
+.template-inspector,
+.template-inspector * {
+  box-sizing: border-box;
+}
+
+.template-inspector.reduced {
+  height: 42px !important;
+  width: 100px !important;
+  top: auto !important;
+  left: auto !important;
+  right: 10px !important;
+  bottom: 0 !important;
+}
+
+.template-inspector.reduced .ti-content {
+  display: none;
+}
+
+.template-inspector .ti-header {
+  background: rgba(0, 0, 0, .9);
+  border-bottom: rgba(0, 0, 0, .9) solid 5px;
+  color: white;
+  cursor: move;
+  z-index: 10;
+  line-height: 20px;
+  -webkit-box-flex: 0 0 34px;
+  -moz-box-flex: 0 0 34px;
+  -webkit-flex: 0 0 34px;
+  -ms-flex: 0 0 34px;
+  flex: 0 0 34px;
+
+}
+
+.template-inspector .ti-header div {
+  display: table;
+  padding: 5px 15px;
+  float: left;
+}
+
+.template-inspector .ti-header .action {
+  float: right;
+}
+
+.template-inspector .ti-header .action:hover {
+  background: rgba(0, 0, 0, .9);
+  cursor: pointer;
+}
+
+.template-inspector .ti-nav {
+  background: rgba(0, 0, 0, .6);
+  border-bottom: rgba(0, 0, 0, .9) solid thin;
+  color: white;
+  z-index: 10;
+  -webkit-box-flex: 0 0 34px;
+  -moz-box-flex: 0 0 34px;
+  -webkit-flex: 0 0 34px;
+  -ms-flex: 0 0 34px;
+  flex: 0 0 34px;
+}
+
+.template-inspector .ti-nav .ti-nav-item {
+  float: left;
+  width: calc(100%/2);
+  padding: 5px 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.template-inspector .ti-nav .ti-nav-item:hover {
+  background: rgba(0, 0, 0, .1);
+}
+
+.template-inspector .ti-nav .ti-nav-item.active {
+  background: rgba(0, 0, 0, .2);
+}
+
+.template-inspector .ti-content {
+  z-index: 9;
+  overflow-y: scroll;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.template-inspector .ti-content .ti-section {
+  padding: 5px 10px;
+  display: table;
+  width: 100%;
+}
+
+.template-inspector .ti-content .ti-section .template-active {
+  font-weight: bold;
+  position: relative;
+  top: 3px;
+  font-size: 14px;
+}
+
+.template-inspector .ti-content .ti-section-title {
+  font-weight: bold;
+  padding: 2px 10px;
+  background: rgba(0, 0, 0, .06);
+  border-top: rgba(0, 0, 0, .05) solid thin;
+  border-bottom: rgba(0, 0, 0, .05) solid thin;
+}
+
+.template-inspector .ti-content .ti-section-item {
+  padding: 2px 10px;
+  border-bottom: rgba(0, 0, 0, .08) solid thin;
+}
+
+.template-inspector .ti-content .ti-section-item:hover {
+  background: rgba(0, 0, 0, .03);
+}
+
+.template-inspector .ti-button {
+  border: rgba(0, 0, 0, .1) solid 3px;
+  border-radius: 3px;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(0, 0, 0, .5);
+  padding: 0 10px;
+  line-height: 24px;
+  height: 32px;
+  outline: 0;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.template-inspector .ti-button:active {
+  border: rgba(0, 0, 0, .2) solid 3px;
+}
+
+.template-inspector .pull-right {
+  float: right;
+}
+
+.template-inspector .text-center {
+  text-align: center;
+  padding: 2px 10px;
+}

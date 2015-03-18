@@ -1,0 +1,97 @@
+<template name="templateInspector">
+
+  <!--
+  {{#if dockRight}}right{{else}}bottom{{/if}}
+  -->
+
+  <div class="template-inspector {{#if reduced}}reduced{{/if}}">
+
+    <div class="ti-header">
+      <div>Template Inspector</div>
+      <div class="action" data-toggle-visibility>{{#if reduced}}+{{else}}-{{/if}}</div>
+    </div>
+
+    <div class="ti-nav">
+      <div class="ti-nav-item {{#if equals section 'TI_active'}}active{{/if}}" data-section="TI_active">Active</div>
+      <div class="ti-nav-item {{#if equals section 'TI_history'}}active{{/if}}" data-section="TI_history">History</div>
+    </div>
+
+    <div class="ti-content">
+
+      {{> UI.dynamic template=section}}
+
+    </div>
+
+  </div>
+
+</template>
+
+<template name="TI_active">
+
+  {{#if name}}
+
+    <div class="ti-section">
+      <span class="template-active">Template: {{name}}</span>
+      <button class="ti-button pull-right" data-log-instance>Log instance</button>
+    </div>
+
+    <div class="ti-section-title">
+      Instance variables
+      {{#if instanceVars.length}}{{else}}<span class="pull-right">None</span>{{/if}}
+    </div>
+    {{#each instanceVars}}
+      <div class="ti-section-item">
+        <span>{{key}}</span>
+        <span class="pull-right">{{value}}</span>
+      </div>
+    {{/each}}
+
+    <div class="ti-section-title">
+      Data
+      {{#if data.length}}{{else}}<span class="pull-right">None</span>{{/if}}
+    </div>
+    {{#each data}}
+      <div class="ti-section-item">
+        <span>{{key}}</span>
+        <span class="pull-right">{{value}}</span>
+      </div>
+    {{/each}}
+
+    <div class="ti-section-title">
+      Helpers
+      {{#if helprs.length}}{{else}}<span class="pull-right">None</span>{{/if}}
+    </div>
+    {{#each helprs}}
+      <div class="ti-section-item">{{this}}</div>
+    {{/each}}
+
+    <div class="ti-section-title">
+      Events
+      {{#if events.length}}{{else}}<span class="pull-right">None</span>{{/if}}
+    </div>
+    {{#each events}}
+      <div class="ti-section-item">{{this}}</div>
+    {{/each}}
+  {{else}}
+
+    <div class="text-center">Hover over a template</div>
+
+  {{/if}}
+
+</template>
+
+<template name="TI_history">
+
+  <div class="ti-section-title">
+    <span>Template</span>
+    <span class="pull-right">Timestamp</span>
+  </div>
+
+  {{#each events}}
+    <div class="ti-section-item">
+      <span>[{{ev}}] {{name}}</span>
+      <span class="pull-right">{{moment doneAt "h:m:s:ms"}}</span>
+    </div>
+  {{/each}}
+
+</template>
