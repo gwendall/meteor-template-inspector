@@ -133,9 +133,14 @@ Template.TI_active.helpers({
   helprs: function() {
     var tpl = Template.instance().parent(3).state("activeTpl");
     var helpers = Meteor._get(tpl, "view", "template", "__helpers") || {};
-    return _.map(_.keys(helpers), function(helper) {
-      return helper.trim();
+    var result = [];
+    _.each(helpers, function(value, key) {
+      result.push({
+        key: key.trim(),
+        value: value
+      });
     });
+    return result;
   },
   data: function() {
     var tpl = Template.instance().parent(3).state("activeTpl");
@@ -145,7 +150,7 @@ Template.TI_active.helpers({
       result.push({
         key: key,
         value: value
-      })
+      });
     });
     return result;
   },

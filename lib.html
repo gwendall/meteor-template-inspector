@@ -62,7 +62,10 @@
       {{#if helprs.length}}{{else}}<span class="pull-right">None</span>{{/if}}
     </div>
     {{#each helprs}}
-      <div class="ti-section-item">{{this}}</div>
+      <div class="ti-section-item">
+        <span>{{key}}</span>
+        <span class="pull-right">{{value}}</span>
+      </div>
     {{/each}}
 
     <div class="ti-section-title">
