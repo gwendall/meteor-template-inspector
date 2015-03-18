@@ -88,7 +88,7 @@ Template.templateInspector.hooks({
         localStorage.setItem("TIleft", el.position().left);
       }
     });
-    var css = {};
+    var css = { opacity: 1 };
     if (localStorage.getItem("TIwidth")) css.width = localStorage.getItem("TIwidth") + "px";
     if (localStorage.getItem("TIheight")) css.height = localStorage.getItem("TIheight") + "px";
     if (localStorage.getItem("TItop")) css.top = localStorage.getItem("TItop") + "px";
