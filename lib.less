@@ -1,0 +1,220 @@
+body.template-inspector-on {
+  [data-template] {
+    border: 2px solid rgba(68, 108, 179, 1) !important;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+  }
+
+  [data-template].ti-active {
+    z-index: 200;
+    border: 2px solid rgba(239, 72, 54, 1) !important;
+    box-shadow: 0 0 10px rgba(239, 72, 54, 1) !important;
+  }
+}
+
+.template-inspector,
+.template-inspector * {
+  box-sizing: border-box;
+}
+
+.flex-display {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-direction(@direction) {
+  -webkit-flex-direction: @direction;
+  flex-direction: @direction;
+}
+
+.flex-size(@size) {
+  -webkit-box-flex: @size;
+  -moz-box-flex: @size;
+  -webkit-flex: @size;
+  -ms-flex: @size;
+  flex: @size;
+}
+
+.template-inspector {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  width: 450px;
+  height: 600px;
+  z-index: 100000000000000000000000000;
+  border: rgba(0, 0, 0, .9) solid 5px;
+  border-radius: 5px;
+  background: rgba(245, 245, 245, .95);
+  color: rgba(0, 0, 0, .7);
+  font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  min-width: 230px;
+  min-height: 30px;
+  opacity: 0;
+  .flex-display;
+  .flex-direction(column);
+  &.reduced {
+    height: 38px !important;
+    width: 100px !important;
+    top: auto !important;
+    left: auto !important;
+    right: 10px !important;
+    bottom: 0 !important;
+    border-radius: 5px 5px 0 0;
+    .ti-content {
+      display: none;
+    }
+  }
+  .ti-header {
+    background: rgba(0, 0, 0, .9);
+    border-bottom: rgba(0, 0, 0, .9) solid 5px;
+    color: white;
+    cursor: move;
+    z-index: 10;
+    line-height: 20px;
+    .flex-size(0 0 34px);
+    div {
+      display: table;
+      padding: 5px 15px;
+      float: left;
+    }
+    .action {
+      float: right;
+      &:hover {
+        background: rgba(0, 0, 0, .9);
+        cursor: pointer;
+      }
+    }
+  }
+  .ti-nav {
+    background: rgba(0, 0, 0, .6);
+    border-bottom: rgba(0, 0, 0, .9) solid thin;
+    color: white;
+    z-index: 10;
+    .flex-size(0 0 34px);
+    .ti-nav-item {
+      float: left;
+      width: calc(100%/3);
+      padding: 5px 10px;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        background: rgba(0, 0, 0, .1);
+      }
+      &.active {
+        background: rgba(0, 0, 0, .2);
+      }
+    }
+  }
+  .ti-content {
+    z-index: 9;
+    overflow: hidden;
+    .flex-size(1);
+    .flex-display;
+    .flex-direction(row);
+    .ti-content-side {
+      .flex-size(0 0 200px);
+      border-right: rgba(0, 0, 0, .2) solid thin;
+      .ti-section-item {
+        cursor: pointer;
+      }
+    }
+    .ti-content-main {
+      .flex-size(1);
+      background: white;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+    .ti-content-block {
+      overflow: hidden;
+      .flex-display;
+      .flex-direction(column);
+      .ti-content-header {
+        .flex-size(0 0 28px);
+      }
+      .ti-content-body {
+        .flex-size(1);
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+    }
+  }
+  .ti-section {
+    padding: 5px 10px;
+    display: table;
+    width: 100%;
+    .template-active {
+      font-weight: bold;
+      position: relative;
+      top: 3px;
+      font-size: 14px;
+    }
+  }
+  .ti-section-title {
+    font-weight: bold;
+    padding: 2px 10px;
+    background: rgba(0, 0, 0, .06);
+    border-top: rgba(0, 0, 0, .05) solid thin;
+    border-bottom: rgba(0, 0, 0, .05) solid thin;
+  }
+  .ti-section-item {
+    padding: 2px 10px;
+    border-bottom: rgba(0, 0, 0, .08) solid thin;
+    display: table;
+    width: 100%;
+    outline: 0;
+    &:hover {
+      background: rgba(0, 0, 0, .03);
+    }
+    &.active {
+      background: rgba(68, 108, 179, 1);
+      color: white;
+    }
+  }
+  .ti-button {
+    border: rgba(0, 0, 0, .1) solid 3px;
+    border-radius: 3px;
+    background: transparent;
+    box-shadow: none;
+    color: rgba(0, 0, 0, .5);
+    padding: 0 7px;
+    line-height: 24px;
+    height: 32px;
+    outline: 0;
+    cursor: pointer;
+    font-size: 12px;
+    margin: 10px 5px;
+    &:active {
+      border: rgba(0, 0, 0, .2) solid 3px;
+    }
+  }
+  .pull-right {
+    float: right;
+  }
+  .text-center {
+    text-align: center;
+    padding: 2px 10px;
+  }
+  .text-main {
+    margin-top: 10px;
+  }
+  .ellipsised {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+    -o-text-overflow: ellipsis !important;
+  }
+}
