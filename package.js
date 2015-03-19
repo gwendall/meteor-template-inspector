@@ -8,7 +8,7 @@ Package.describe({
 Package.onUse(function (api, where) {
 
   api.use([
-    "less",
+    "less@@1.0.13",
     "random@1.0.2",
     "mizzao:jquery-ui@1.11.2",
     "mongo@1.0.11",
