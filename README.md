@@ -13,5 +13,5 @@ meteor add gwendall:template-inspector
 
 To do
 ------------  
-- Show proper file-tree for templates (showint nested tpls on click)  
+- Show proper file-tree for templates (showing nested tpls on click)  
 - Allow to show helpers values (right now, not possible since helpers relying on Template.instance() can't get called from outside the template itself)
